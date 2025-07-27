@@ -1,0 +1,67 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { ShoppingCart, PhoneCall, Mail } from "lucide-react";
+
+const products = [
+  {
+    id: 1,
+    name: "Adjustable Steel Props",
+    description: "High load-bearing telescopic props for shuttering support.",
+    price: "₹1200",
+    image: "/images/steel-props.jpg"
+  },
+  {
+    id: 2,
+    name: "Cuplock Scaffolding System",
+    description: "Quick-lock scaffolding for all construction support needs.",
+    price: "₹2500",
+    image: "/images/cuplock.jpg"
+  },
+  {
+    id: 3,
+    name: "Shuttering Plywood",
+    description: "Waterproof plywood for repeated shuttering usage.",
+    price: "₹950",
+    image: "/images/plywood.jpg"
+  }
+];
+
+export default function ScaffoldingStore() {
+  return (
+    <div className="min-h-screen bg-gray-50 p-6">
+      <header className="text-center mb-8">
+        <h1 className="text-4xl font-bold mb-2">Lakhey Scaffoldings</h1>
+        <p className="text-gray-600">Quality Scaffolding & Shuttering Material Supplier</p>
+      </header>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <Card key={product.id} className="shadow-xl">
+            <img src={product.image} alt={product.name} className="rounded-t-2xl h-48 w-full object-cover" />
+            <CardContent>
+              <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
+              <p className="text-sm text-gray-600 mb-2">{product.description}</p>
+              <div className="flex items-center justify-between">
+                <span className="font-bold text-lg">{product.price}</span>
+                <Button className="rounded-2xl px-4 py-1 text-sm flex items-center gap-1">
+                  <ShoppingCart className="w-4 h-4" /> Order
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <footer className="mt-12 text-center text-gray-500">
+        <p className="text-sm">Contact us:</p>
+        <div className="flex justify-center gap-4 mt-2 text-sm">
+          <span className="flex items-center gap-1"><PhoneCall className="w-4 h-4" /> +91 98765 43210</span>
+          <span className="flex items-center gap-1"><Mail className="w-4 h-4" /> sales@lakheyscaffoldings.com</span>
+        </div>
+        <p className="mt-4 text-xs">© 2025 Lakhey Scaffoldings. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
